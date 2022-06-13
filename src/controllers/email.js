@@ -1,7 +1,7 @@
 const AWS = require("aws-sdk")
 const SES_CONFIG = {
-    accessKeyId: 'AKIA324BFGJCHI4AW5PR',
-    secretAccessKey: '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',
+    accessKeyId: process.env.SES_ACCESS_KEY,
+    secretAccessKey: process.env.SES_SECRET,
     region: 'ap-southeast-1',
 }
 
