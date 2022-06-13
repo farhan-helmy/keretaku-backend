@@ -2,15 +2,8 @@ const mongoose = require("mongoose");
 const validator = require("validator");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const {
-  nanoid
-} = require("nanoid");
 
 const userSchema = new mongoose.Schema({
-  _id: {
-    type: String,
-    default: () => nanoid(5),
-  },
   email: {
     type: String,
     unique: true,
@@ -34,7 +27,7 @@ const userSchema = new mongoose.Schema({
       }
     }
   },
-  cars: [{ type: String, ref: 'Cars' }],
+  cars: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Car' }],
   tokens: [{
     token: {
       type: String,

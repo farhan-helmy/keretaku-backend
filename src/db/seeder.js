@@ -2,12 +2,10 @@ require("../db/mongoose")
 
 const User = require("../models/user")
 const jwt = require("jsonwebtoken");
-const {
-    nanoid
-} = require("nanoid");
+const mongoose = require('mongoose')
 
+const normalUserId = new mongoose.Types.ObjectId();
 
-const normalUserId = nanoid(5)
 const normalUser = {
     _id: normalUserId,
     email: 'farhan@mybengkel.co',

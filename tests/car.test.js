@@ -21,7 +21,7 @@ test('Should add a new car', async () => {
     }).expect(201)
 
     // Assert that the database was changed correctly
-    const car = await Car.findById(response.body.car._id)
+    const car = await Car.findById(response.body._id)
     expect(car).not.toBeNull()
 
     // Assertions about the response
@@ -32,4 +32,14 @@ test('Should add a new car', async () => {
     //     token: user.tokens[0].token
     // })
     // expect(user.password).not.toBe('MyPass777!')
+})
+
+test('Should get all cars', async () => {
+    const response = await request(app)
+    .get('/v1/cars')
+    .set("Authorization", `Bearer ${normalUser.tokens[0].token}`)
+    .expect(200)
+
+    const car = await Car.findById(response.body.car.cars[0]._id)
+    expect(car).not.toBeNull()
 })

@@ -6,5 +6,7 @@ const router = new express.Router();
 
 router.post("/car/register", auth, carController.registerCar)
 
+router.get("/cars", auth, carController.getCars)
+
 module.exports = router
 

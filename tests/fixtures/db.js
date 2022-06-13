@@ -2,23 +2,30 @@ const mongoose = require('mongoose')
 const jwt = require('jsonwebtoken')
 const User = require('../../src/models/user')
 const Car = require('../../src/models/car')
-const {
-    nanoid
-} = require("nanoid");
 
-const normalUserId = nanoid(5)
+const normalUserId = new mongoose.Types.ObjectId();
+const carId = new mongoose.Types.ObjectId();
+
+const normalUserCar = {
+    _id: carId,
+    plate_number: "FUK123"
+}
+
 const normalUser = {
     _id: normalUserId,
-    email: 'farhan@example.com',
+    email: 'fuck@example.com',
     password: 'ExampleUser123!',
     tokens: [{
         token: jwt.sign({ _id: normalUserId }, process.env.JWT_SECRET)
-    }]
+    }],
+    cars: normalUserCar
 }
+
 
 const setupDatabase = async () => {
     await User.deleteMany()
     await Car.deleteMany()
+    await new Car(normalUserCar).save()
     await new User(normalUser).save()
 }
 

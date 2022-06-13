@@ -5,11 +5,6 @@ const {
 
 
 const carSchema = new mongoose.Schema({
-    _id: {
-        type: String,
-        default: () => nanoid(5),
-    },
-
     plate_number: {
         type: String,
         unique: true,
