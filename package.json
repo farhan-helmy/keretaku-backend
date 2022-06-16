@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.1142.0",
+    "aws-sdk": "^2.1144.0",
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "env-cmd": "^10.1.0",
