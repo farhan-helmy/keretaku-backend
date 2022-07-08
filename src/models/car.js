@@ -12,6 +12,10 @@ const carSchema = new mongoose.Schema({
         lowercase: true,
         required: true
     },
+    odometer: {
+        type: Number,
+        default: 0
+    },
     services: [{ type: String, ref: 'Service' }],
 },{
     timestamps: true

@@ -23,7 +23,7 @@ const registerCar = async (req, res) => {
 
     } catch (e) {
         var message
-        console.log(e.code)
+        //console.log(e.code)
 
         if (e.code === 11000) {
             message = "Car already exist"
@@ -56,7 +56,25 @@ const getCars = async (req, res) => {
     }
 }
 
+const getCarInfo = async (req, res) => {
+    try {
+        const user = await User.findById(req.user.id).populate('cars')
+
+        let car = user.cars.find(c => {
+            return c.plate_number === req.params["platenumber"]
+        })
+
+        console.log(car)
+
+        res.status(200).send(car)
+        
+    } catch (e) {
+        console.log(e)
+    }
+}
+
 module.exports = {
     registerCar,
-    getCars
+    getCars,
+    getCarInfo
 }
