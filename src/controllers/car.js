@@ -64,10 +64,16 @@ const getCarInfo = async (req, res) => {
             return c.plate_number === req.params["platenumber"]
         })
 
-        console.log(car)
+        //console.log(car)
+        if (car === undefined) {
+            car_info = false
+        } else {
+            car_info = car
+        }
 
-        res.status(200).send(car)
-        
+        //console.log(car_info)
+        res.status(200).send(car_info)
+
     } catch (e) {
         console.log(e)
     }
