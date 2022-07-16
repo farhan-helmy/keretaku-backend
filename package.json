@@ -7,7 +7,8 @@
     "test": "env-cmd -f ./config/test.env jest --watch --runInBand",
     "dev": "env-cmd -f ./config/dev.env nodemon src/index.js",
     "seed": "env-cmd -f ./config/dev.env node src/db/seeder.js",
-    "ci": "env-cmd -f ./config/ci.env jest --runInBand"
+    "ci": "env-cmd -f ./config/ci.env jest --runInBand",
+    "test_con": "env-cmd -f ./config/dev.env node src/db/mongoose_test.js"
   },
   "author": "",
   "license": "ISC",
